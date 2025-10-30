@@ -2,7 +2,16 @@
 //  FormularioModel.swift
 //  AppRentameYA
 //
-//  Created by Maydeli Castan on 29/10/25.
-//
 
-import Foundation
+import SwiftUI
+
+struct FormularioModel: Equatable {
+    var vehiculoNombre: String
+    var nombreCompleto: String = ""
+    var telefono: String = ""
+    var licenciaFrente: UIImage? = nil
+}
+
+extension FormularioModel {
+    var telefonoSoloDigitos: String { telefono.filter(\.isNumber) }
+}

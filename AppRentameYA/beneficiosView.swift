@@ -7,12 +7,22 @@
 
 import SwiftUI
 
-struct beneficiosView: View {
+struct BenefitRow: View {
+    var text: String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack(alignment: .top, spacing: 10) {
+            Image(systemName: "checkmark.circle")
+                .foregroundColor(.green)
+                .font(.system(size: 18))
+                .padding(.top, 2)
+            Text(text)
+                .font(.system(size: 16))
+                .foregroundColor(.primary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
     }
 }
 
 #Preview {
-    beneficiosView()
+    BenefitRow(text: "Seguro de cobertura amplia incluido.")
 }

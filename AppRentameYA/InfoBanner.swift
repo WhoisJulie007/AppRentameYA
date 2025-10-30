@@ -2,17 +2,21 @@
 //  InfoBanner.swift
 //  AppRentameYA
 //
-//  Created by Maydeli Castan on 29/10/25.
-//
 
 import SwiftUI
 
 struct InfoBanner: View {
+    let texto: String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack(alignment: .top, spacing: 10) {
+            Image(systemName: "info.circle.fill")
+                .font(.title3)
+                .foregroundColor(.blue)
+            Text(AttributedString("**Depósito en garantía:** \(texto)"))
+                .font(.subheadline)
+        }
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(12)
     }
-}
-
-#Preview {
-    InfoBanner()
 }
