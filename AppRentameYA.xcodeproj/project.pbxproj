@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		35F050202EC56307008220D4 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 35F0501F2EC56307008220D4 /* FirebaseCore */; };
+		35F050222EC5630C008220D4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 35F050212EC5630C008220D4 /* FirebaseAuth */; };
+		35F050242EC56312008220D4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 35F050232EC56312008220D4 /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		6C1281322EB2BB8E00A20ECA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -29,9 +35,30 @@
 		6C12813B2EB2BB8E00A20ECA /* AppRentameYAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppRentameYAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		35F0501B2EC55E44008220D4 /* Exceptions for "AppRentameYA" folder in "AppRentameYATests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"GoogleService-Info.plist",
+			);
+			target = 6C1281302EB2BB8E00A20ECA /* AppRentameYATests */;
+		};
+		35F0501C2EC55E44008220D4 /* Exceptions for "AppRentameYA" folder in "AppRentameYAUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"GoogleService-Info.plist",
+			);
+			target = 6C12813A2EB2BB8E00A20ECA /* AppRentameYAUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6C1281232EB2BB8B00A20ECA /* AppRentameYA */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				35F0501B2EC55E44008220D4 /* Exceptions for "AppRentameYA" folder in "AppRentameYATests" target */,
+				35F0501C2EC55E44008220D4 /* Exceptions for "AppRentameYA" folder in "AppRentameYAUITests" target */,
+			);
 			path = AppRentameYA;
 			sourceTree = "<group>";
 		};
@@ -52,6 +79,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35F050202EC56307008220D4 /* FirebaseCore in Frameworks */,
+				35F050222EC5630C008220D4 /* FirebaseAuth in Frameworks */,
+				35F050242EC56312008220D4 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +102,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35F0501E2EC56307008220D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6C1281182EB2BB8B00A20ECA = {
 			isa = PBXGroup;
 			children = (
 				6C1281232EB2BB8B00A20ECA /* AppRentameYA */,
 				6C1281342EB2BB8E00A20ECA /* AppRentameYATests */,
 				6C12813E2EB2BB8E00A20ECA /* AppRentameYAUITests */,
+				35F0501E2EC56307008220D4 /* Frameworks */,
 				6C1281222EB2BB8B00A20ECA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,6 +150,9 @@
 			);
 			name = AppRentameYA;
 			packageProductDependencies = (
+				35F0501F2EC56307008220D4 /* FirebaseCore */,
+				35F050212EC5630C008220D4 /* FirebaseAuth */,
+				35F050232EC56312008220D4 /* FirebaseFirestore */,
 			);
 			productName = AppRentameYA;
 			productReference = 6C1281212EB2BB8B00A20ECA /* AppRentameYA.app */;
@@ -195,6 +236,9 @@
 			);
 			mainGroup = 6C1281182EB2BB8B00A20ECA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				35F0501D2EC56112008220D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6C1281222EB2BB8B00A20ECA /* Products */;
 			projectDirPath = "";
@@ -399,6 +443,7 @@
 				DEVELOPMENT_TEAM = 8S6CG923B7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +473,7 @@
 				DEVELOPMENT_TEAM = 8S6CG923B7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -558,6 +604,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		35F0501D2EC56112008220D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		35F0501F2EC56307008220D4 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35F0501D2EC56112008220D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		35F050212EC5630C008220D4 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35F0501D2EC56112008220D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		35F050232EC56312008220D4 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35F0501D2EC56112008220D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6C1281192EB2BB8B00A20ECA /* Project object */;
 }
