@@ -1,15 +1,18 @@
-//
-//  VehiculoModel.swift
-//  AppRentameYA
-//
-//  Created by Maydeli Castan on 29/10/25.
-//
-
 import Foundation
 
-struct VehiculoModel: Identifiable, Hashable {
-    let id = UUID()
-    let nombre: String
-    let precioSemanaMXN: Int
-    let caracteristicas: [String]
+struct VehiculoModel: Identifiable {
+    var id: String?
+    var nombre: String
+    var precioSemanaMXN: Int
+    var caracteristicas: [String]
+
+    init(id: String? = nil,
+         nombre: String,
+         precioSemanaMXN: Int,
+         caracteristicas: [String]) {
+        self.id = id
+        self.nombre = nombre
+        self.precioSemanaMXN = precioSemanaMXN
+        self.caracteristicas = caracteristicas
+    }
 }
