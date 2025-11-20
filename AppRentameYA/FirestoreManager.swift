@@ -1,6 +1,7 @@
 import Foundation
 import FirebaseFirestore
 
+@MainActor
 class FirestoreManager: ObservableObject {
 
     private let db = Firestore.firestore()
@@ -34,7 +35,7 @@ class FirestoreManager: ObservableObject {
                     )
                 } ?? []
 
-                DispatchQueue.main.async {
+                Task { @MainActor in
                     self.vehiculos = nuevos
                     print("Vehículos actualizados desde Firestore. Total: \(self.vehiculos.count)")
                 }

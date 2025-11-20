@@ -10,6 +10,7 @@ struct FormularioModel: Equatable {
     var nombreCompleto: String = ""
     var telefono: String = ""
     var licenciaFrente: UIImage? = nil
+    var aceptaTerminos: Bool = false
 }
 
 extension FormularioModel {

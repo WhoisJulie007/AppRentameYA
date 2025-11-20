@@ -27,9 +27,10 @@ final class FormularioViewModel: ObservableObject {
     var nombreValido: Bool { form.nombreCompleto.trimmingCharacters(in: .whitespaces).count >= 3 }
     var telefonoValido: Bool { form.telefonoSoloDigitos.count == 10 }
     var licenciaSubida: Bool { form.licenciaFrente != nil }
+    var terminosAceptados: Bool { form.aceptaTerminos }
     
     var puedeEnviar: Bool { 
-        !yaTieneSolicitud && nombreValido && telefonoValido && licenciaSubida && !isLoading
+        !yaTieneSolicitud && nombreValido && telefonoValido && licenciaSubida && terminosAceptados && !isLoading
     }
     
     /// Verifica si el usuario ya tiene una solicitud pendiente

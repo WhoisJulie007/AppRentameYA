@@ -86,6 +86,32 @@ struct FormularioView: View {
                     // Banner depósito
                     InfoBanner(texto: "Se requiere un depósito de $3,500 MXN al firmar el contrato.")
                     
+                    // Checkbox de consentimiento
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack(alignment: .top, spacing: 12) {
+                            Button(action: {
+                                vm.form.aceptaTerminos.toggle()
+                            }) {
+                                Image(systemName: vm.form.aceptaTerminos ? "checkmark.square.fill" : "square")
+                                    .foregroundColor(vm.form.aceptaTerminos ? .blue : .gray)
+                                    .font(.title3)
+                            }
+                            
+                            Text("Estoy de acuerdo en que mis datos personales (nombre, teléfono e imagen de licencia) sean utilizados para el proceso de evaluación de mi solicitud de renta de vehículo y para contactarme respecto a esta solicitud.")
+                                .font(.subheadline)
+                                .foregroundColor(.primary)
+                        }
+                        
+                        if !vm.terminosAceptados && vm.form.nombreCompleto.count > 0 {
+                            Text("Debes aceptar los términos para continuar")
+                                .font(.caption)
+                                .foregroundColor(.red)
+                        }
+                    }
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(12)
+                    
                     // Espacio para que el botón no quede pegado al TabBar
                     Spacer(minLength: 8)
                 }

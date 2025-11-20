@@ -139,6 +139,7 @@ class FormularioService: ObservableObject {
                 "nombreCompleto": nombreCompleto,
                 "telefono": telefono,
                 "licenciaURL": licenciaURL,
+                "aceptaTerminos": true, // Siempre true porque se valida antes de enviar
                 "estado": "pendiente",
                 "fechaCreacion": FieldValue.serverTimestamp(),
                 "fechaActualizacion": FieldValue.serverTimestamp()
