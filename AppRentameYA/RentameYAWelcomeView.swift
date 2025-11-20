@@ -1,51 +1,50 @@
 import SwiftUI
+import GoogleSignInSwift
 
 struct RentameYaWelcomeView: View {
+    
+    @StateObject var auth = AuthViewModel()
+    
     var body: some View {
-        ZStack {
-            Color(UIColor.systemBackground).ignoresSafeArea()
-
-            VStack(spacing: 24) {
-                Spacer(minLength: 80)
-
+        VStack(spacing: 32) {
+            
+            Spacer()
+            
+            // LOGO
+            VStack(spacing: 12) {
+                Image(systemName: "car")
+                    .font(.system(size: 70, weight: .light))
+                    .foregroundColor(Color.blue)
+                    .padding(.bottom, 8)
+                
                 Text("RentameYa")
-                    .font(.system(size: 36, weight: .heavy, design: .rounded))
-                    .foregroundStyle(.primary)
-
+                    .font(.system(size: 36, weight: .bold))
+                
                 Text("Renta un auto y empieza a ganar hoy.")
-                    .font(.system(size: 16))
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 24)
-
-                VStack(spacing: 14) {
-                    Button(action: {}) {
-                        Text("Continuar con Apple")
-                            .font(.system(size: 16, weight: .semibold))
-                            .frame(maxWidth: .infinity, minHeight: 52)
-                    }
-                    .foregroundStyle(.white)
-                    .background(.black)
-                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-
-                    Button(action: {}) {
-                        Text("Continuar con Google")
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundStyle(.primary)
-                            .frame(maxWidth: .infinity, minHeight: 52)
-                    }
-                    .background(.clear)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 14, style: .continuous)
-                            .stroke(Color(UIColor.systemGray4), lineWidth: 1)
-                    )
-                }
-                .padding(.horizontal, 20)
-
-                Spacer()
+                    .font(.system(size: 18))
+                    .foregroundColor(.gray)
             }
-            .padding(.bottom, 24)
+            .multilineTextAlignment(.center)
+            .padding(.horizontal, 30)
+            
+            Spacer()
+            
+            
+            // BOTÓN: GOOGLE (botón oficial)
+            GoogleSignInButton {
+                Task {
+                    await auth.signInWithGoogle()
+                }
+            }
+            .frame(height: 55)
+            .padding(.horizontal)
+
+            Spacer()
+            
         }
+        .padding()
+        .background(Color(.systemBackground))
+        .ignoresSafeArea()
     }
 }
 

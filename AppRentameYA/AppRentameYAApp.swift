@@ -26,7 +26,7 @@ struct AppRentameYAApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RentameYaWelcomeView()
         }
     }
 }
