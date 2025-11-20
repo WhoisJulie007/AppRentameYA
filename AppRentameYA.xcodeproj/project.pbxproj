@@ -13,6 +13,7 @@
 		35F050202EC56307008220D4 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 35F0501F2EC56307008220D4 /* FirebaseCore */; };
 		35F050222EC5630C008220D4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 35F050212EC5630C008220D4 /* FirebaseAuth */; };
 		35F050242EC56312008220D4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 35F050232EC56312008220D4 /* FirebaseFirestore */; };
+		6C1285192ECFAC6C00A20ECA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 6C1285182ECFAC6C00A20ECA /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 				3594DE0E2EC7FC24002F835E /* FirebaseAppCheck in Frameworks */,
 				35F050202EC56307008220D4 /* FirebaseCore in Frameworks */,
 				3594DE192EC803CE002F835E /* GoogleSignInSwift in Frameworks */,
+				6C1285192ECFAC6C00A20ECA /* FirebaseStorage in Frameworks */,
 				35F050222EC5630C008220D4 /* FirebaseAuth in Frameworks */,
 				35F050242EC56312008220D4 /* FirebaseFirestore in Frameworks */,
 			);
@@ -170,6 +172,7 @@
 				3594DE0D2EC7FC24002F835E /* FirebaseAppCheck */,
 				3594DE162EC803CE002F835E /* GoogleSignIn */,
 				3594DE182EC803CE002F835E /* GoogleSignInSwift */,
+				6C1285182ECFAC6C00A20ECA /* FirebaseStorage */,
 			);
 			productName = AppRentameYA;
 			productReference = 6C1281212EB2BB8B00A20ECA /* AppRentameYA.app */;
@@ -670,6 +673,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 35F0501D2EC56112008220D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		6C1285182ECFAC6C00A20ECA /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35F0501D2EC56112008220D4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

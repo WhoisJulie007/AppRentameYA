@@ -7,6 +7,7 @@ import SwiftUI
 
 struct FormularioView: View {
     @StateObject private var vm: FormularioViewModel
+    @Environment(\.dismiss) private var dismiss
     
     // Inyección del nombre del vehículo
     init(vehiculoNombre: String) {
@@ -14,6 +15,25 @@ struct FormularioView: View {
     }
     
     var body: some View {
+        Group {
+            if vm.solicitudEnviada {
+                SolicitudEnviadaViewVisual()
+            } else {
+                formularioContent
+            }
+        }
+        .alert("Error", isPresented: .constant(vm.errorMessage != nil)) {
+            Button("OK") {
+                vm.errorMessage = nil
+            }
+        } message: {
+            if let error = vm.errorMessage {
+                Text(error)
+            }
+        }
+    }
+    
+    private var formularioContent: some View {
         VStack(spacing: 0) {
             // Encabezado con back automático si lo presentas dentro de NavigationStack
             ScrollView {
@@ -26,6 +46,15 @@ struct FormularioView: View {
                     Text("Completa tus datos. Un asesor te contactará a la brevedad.")
                         .foregroundColor(.gray)
                         .font(.subheadline)
+                    
+                    // Mensaje si ya tiene solicitud
+                    if vm.yaTieneSolicitud {
+                        InfoBanner(
+                            texto: "Ya tienes una solicitud pendiente. No puedes enviar otra hasta que se procese la actual.",
+                            color: .orange,
+                            mostrarTitulo: false
+                        )
+                    }
                     
                     // Nombre
                     Group {
@@ -68,13 +97,20 @@ struct FormularioView: View {
             // Botón enviar
             VStack(spacing: 8) {
                 Button(action: vm.enviar) {
-                    Text("Enviar Aplicación")
-                        .fontWeight(.semibold)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .foregroundColor(.white)
-                        .background(vm.puedeEnviar ? Color.blue : Color.gray)
-                        .cornerRadius(12)
+                    HStack {
+                        if vm.isLoading {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                .scaleEffect(0.8)
+                        }
+                        Text(vm.isLoading ? "Enviando..." : "Enviar Aplicación")
+                            .fontWeight(.semibold)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(vm.puedeEnviar ? Color.blue : Color.gray)
+                    .cornerRadius(12)
                 }
                 .disabled(!vm.puedeEnviar)
                 .padding(.horizontal)

@@ -6,11 +6,21 @@
 import SwiftUI
 import Combine
 
+@MainActor
 final class FormularioViewModel: ObservableObject {
     @Published var form: FormularioModel
+    @Published var isLoading = false
+    @Published var errorMessage: String?
+    @Published var solicitudEnviada = false
+    @Published var yaTieneSolicitud = false
+    
+    private let formularioService = FormularioService()
     
     init(vehiculoNombre: String) {
         self.form = .init(vehiculoNombre: vehiculoNombre)
+        Task {
+            await verificarSolicitudExistente()
+        }
     }
     
     // Validaciones básicas
@@ -18,12 +28,41 @@ final class FormularioViewModel: ObservableObject {
     var telefonoValido: Bool { form.telefonoSoloDigitos.count == 10 }
     var licenciaSubida: Bool { form.licenciaFrente != nil }
     
-    var puedeEnviar: Bool { nombreValido && telefonoValido && licenciaSubida }
+    var puedeEnviar: Bool { 
+        !yaTieneSolicitud && nombreValido && telefonoValido && licenciaSubida && !isLoading
+    }
     
+    /// Verifica si el usuario ya tiene una solicitud pendiente
+    func verificarSolicitudExistente() async {
+        yaTieneSolicitud = await formularioService.verificarSolicitudExistente()
+    }
+    
+    /// Envía la solicitud a Firebase
     func enviar() {
-        // Aquí integrarías tu lógica: subir archivos, enviar a API, etc.
-        print("Enviando aplicación para \(form.vehiculoNombre)")
-        print("Nombre: \(form.formattedNombre), Tel: \(form.telefonoSoloDigitos)")
+        guard let licencia = form.licenciaFrente else {
+            errorMessage = "Por favor, sube una foto de tu licencia"
+            return
+        }
+        
+        isLoading = true
+        errorMessage = nil
+        
+        Task {
+            do {
+                try await formularioService.enviarSolicitud(
+                    vehiculoNombre: form.vehiculoNombre,
+                    nombreCompleto: form.nombreCompleto.trimmingCharacters(in: .whitespacesAndNewlines),
+                    telefono: form.telefonoSoloDigitos,
+                    licenciaFrente: licencia
+                )
+                
+                solicitudEnviada = true
+                isLoading = false
+            } catch {
+                isLoading = false
+                errorMessage = error.localizedDescription
+            }
+        }
     }
 }
 

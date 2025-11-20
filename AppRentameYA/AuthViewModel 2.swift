@@ -7,17 +7,25 @@ import GoogleSignInSwift
 class AuthViewModel: ObservableObject {
     @Published var user: User?
     @Published var isAuthenticated = false
+    
+    private var authStateListener: AuthStateDidChangeListenerHandle?
 
     init() {
         self.user = Auth.auth().currentUser
         self.isAuthenticated = (self.user != nil)
         
         // Listener para cambios en el estado de autenticación
-        Auth.auth().addStateDidChangeListener { [weak self] _, user in
+        authStateListener = Auth.auth().addStateDidChangeListener { [weak self] _, user in
             Task { @MainActor in
                 self?.user = user
                 self?.isAuthenticated = (user != nil)
             }
+        }
+    }
+    
+    deinit {
+        if let listener = authStateListener {
+            Auth.auth().removeStateDidChangeListener(listener)
         }
     }
 
