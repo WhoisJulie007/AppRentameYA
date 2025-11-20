@@ -6,58 +6,41 @@ import GoogleSignInSwift
 @MainActor
 class AuthViewModel: ObservableObject {
     @Published var user: User?
+    @Published var isAuthenticated = false
 
     init() {
         self.user = Auth.auth().currentUser
+        self.isAuthenticated = (self.user != nil)
     }
 
-    // ----------------------------------------------------------
-    // MARK: - GOOGLE SIGN IN
-    // ----------------------------------------------------------
     func signInWithGoogle() async {
-        guard let vc = UIApplication.shared.topViewController() else {
-            print("No top view controller found")
-            return
-        }
+        guard let vc = UIApplication.shared.topViewController() else { return }
 
         do {
-            // 1. Abrir Google Sign-In
             let result = try await GIDSignIn.sharedInstance.signIn(withPresenting: vc)
 
-            // 2. Obtener token
-            guard let idToken = result.user.idToken?.tokenString else {
-                print("No id token found")
-                return
-            }
+            guard let idToken = result.user.idToken?.tokenString else { return }
 
-            // 3. Crear credencial de Firebase
             let credential = GoogleAuthProvider.credential(
                 withIDToken: idToken,
                 accessToken: result.user.accessToken.tokenString
             )
 
-            // 4. Iniciar sesión en Firebase
             let authResult = try await Auth.auth().signIn(with: credential)
 
-            // 5. Guardar usuario
             self.user = authResult.user
-            print("Login exitoso con Google:", authResult.user.email ?? "Sin correo")
+            self.isAuthenticated = true
+
+            print("🔥 Login exitoso con Google:", authResult.user.email ?? "")
 
         } catch {
-            print("Google Sign-In error:", error.localizedDescription)
+            print("❌ Error Google Sign-In:", error.localizedDescription)
         }
     }
 
-    // ----------------------------------------------------------
-    // MARK: - LOGOUT
-    // ----------------------------------------------------------
     func signOut() {
-        do {
-            try Auth.auth().signOut()
-            self.user = nil
-            print("Sesión cerrada")
-        } catch {
-            print("Error al cerrar sesión:", error.localizedDescription)
-        }
+        try? Auth.auth().signOut()
+        user = nil
+        isAuthenticated = false
     }
 }
