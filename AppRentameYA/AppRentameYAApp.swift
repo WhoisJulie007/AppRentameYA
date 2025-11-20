@@ -24,9 +24,17 @@ struct AppRentameYAApp: App {
         #endif
     }
 
+    @StateObject private var auth = AuthViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            RentameYaWelcomeView()
+            if auth.isAuthenticated {
+                RentameYaMainView()
+                    .environmentObject(auth)
+            } else {
+                RentameYaWelcomeView()
+                    .environmentObject(auth)
+            }
         }
     }
 }

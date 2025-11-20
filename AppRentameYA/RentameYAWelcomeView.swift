@@ -12,7 +12,7 @@ struct RentameYaWelcomeView: View {
 
                 // LOGO Y TÍTULO
                 VStack(spacing: 12) {
-                    Image(systemName: "house")
+                    Image(systemName: "car")
                         .font(.system(size: 70, weight: .light))
                         .foregroundColor(.blue)
                         .padding(.bottom, 8)

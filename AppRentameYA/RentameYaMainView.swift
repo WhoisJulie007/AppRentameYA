@@ -2,6 +2,7 @@ import SwiftUI
 
 struct RentameYaMainView: View {
     
+    @EnvironmentObject var auth: AuthViewModel
     @State private var selectedTab: RentameYaTab = .inicio
     
     var body: some View {
@@ -48,4 +49,5 @@ struct RentameYaMainView: View {
 
 #Preview {
     RentameYaMainView()
+        .environmentObject(AuthViewModel())
 }

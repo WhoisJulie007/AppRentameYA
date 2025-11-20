@@ -11,6 +11,14 @@ class AuthViewModel: ObservableObject {
     init() {
         self.user = Auth.auth().currentUser
         self.isAuthenticated = (self.user != nil)
+        
+        // Listener para cambios en el estado de autenticación
+        Auth.auth().addStateDidChangeListener { [weak self] _, user in
+            Task { @MainActor in
+                self?.user = user
+                self?.isAuthenticated = (user != nil)
+            }
+        }
     }
 
     func signInWithGoogle() async {
