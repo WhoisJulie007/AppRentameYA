@@ -41,7 +41,7 @@ struct RentameYaWelcomeView: View {
             .background(Color(.systemBackground))
             .ignoresSafeArea()
             .navigationDestination(isPresented: $auth.isAuthenticated) {
-                RentameYaInicioView()   // ← Aquí navega automáticamente
+                RentameYaMainView()
             }
         }
     }

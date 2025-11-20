@@ -41,20 +41,6 @@ struct PerfilViewVisual: View {
             }
             
             
-            VStack(spacing: 4) {
-                Divider()
-                HStack {
-                    Spacer()
-                    TabBarItemVisual(title: "Inicio", imageName: "house.fill", isSelected: false)
-                    Spacer()
-                    TabBarItemVisual(title: "Vehículos", imageName: "car.fill", isSelected: false)
-                    Spacer()
-                    TabBarItemVisual(title: "Perfil", imageName: "person.fill", isSelected: true) // Perfil seleccionado
-                    Spacer()
-                }
-                .padding(.vertical, 8)
-                .background(Color.white)
-            }
         }
     }
 }

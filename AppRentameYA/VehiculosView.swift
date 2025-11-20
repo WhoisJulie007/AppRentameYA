@@ -45,20 +45,7 @@ struct VehiculosView: View {
                 .background(Color(.systemGroupedBackground))
                 
                 // Tab bar inferior (manteniéndolo igual)
-                VStack(spacing: 4) {
-                    Divider()
-                    HStack {
-                        Spacer()
-                        TabBarItemVisual(title: "Inicio", imageName: "house.fill", isSelected: false)
-                        Spacer()
-                        TabBarItemVisual(title: "Vehículos", imageName: "car.fill", isSelected: true)
-                        Spacer()
-                        TabBarItemVisual(title: "Perfil", imageName: "person.fill", isSelected: false)
-                        Spacer()
-                    }
-                    .padding(.vertical, 8)
-                    .background(Color.white)
-                }
+                
             }
             .background(Color(.systemGroupedBackground))
             .navigationBarTitleDisplayMode(.inline)
