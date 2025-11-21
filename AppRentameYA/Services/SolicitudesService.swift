@@ -26,7 +26,7 @@ class SolicitudesService: ObservableObject {
     /// Obtiene todas las solicitudes (solo para admin)
     func obtenerTodasLasSolicitudes() async {
         guard esAdmin() else {
-            print("⚠️ Solo los administradores pueden ver todas las solicitudes")
+            print("Solo los administradores pueden ver todas las solicitudes")
             return
         }
         
@@ -46,7 +46,7 @@ class SolicitudesService: ObservableObject {
         } catch {
             isLoading = false
             errorMessage = error.localizedDescription
-            print("❌ Error al obtener solicitudes: \(error.localizedDescription)")
+            print("Error al obtener solicitudes: \(error.localizedDescription)")
         }
     }
     
@@ -70,11 +70,11 @@ class SolicitudesService: ObservableObject {
             }
             
             isLoading = false
-            print("✅ Solicitudes obtenidas: \(solicitudes.count)")
+            print("Solicitudes obtenidas: \(solicitudes.count)")
         } catch {
             isLoading = false
             errorMessage = error.localizedDescription
-            print("❌ Error al obtener mis solicitudes: \(error.localizedDescription)")
+            print("Error al obtener mis solicitudes: \(error.localizedDescription)")
         }
     }
     
@@ -91,7 +91,7 @@ class SolicitudesService: ObservableObject {
                 guard let self = self else { return }
                 
                 if let error = error {
-                    print("❌ Error en listener de solicitudes: \(error.localizedDescription)")
+                    print("Error en listener de solicitudes: \(error.localizedDescription)")
                     return
                 }
                 
@@ -99,7 +99,7 @@ class SolicitudesService: ObservableObject {
                     self.solicitudes = snapshot?.documents.compactMap { doc in
                         try? doc.data(as: SolicitudModel.self)
                     } ?? []
-                    print("🔄 Solicitudes actualizadas en tiempo real: \(self.solicitudes.count)")
+                    print("Solicitudes actualizadas en tiempo real: \(self.solicitudes.count)")
                 }
             }
     }
@@ -140,7 +140,6 @@ class SolicitudesService: ObservableObject {
             "fechaActualizacion": FieldValue.serverTimestamp()
         ])
         
-        // Actualizar la lista local
         if let index = solicitudes.firstIndex(where: { $0.id == solicitudId }) {
             solicitudes[index].estado = SolicitudModel.EstadoSolicitud.rechazada.rawValue
         }

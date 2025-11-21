@@ -15,11 +15,10 @@ struct SolicitudModel: Identifiable, Codable {
     var telefono: String
     var licenciaURL: String
     var aceptaTerminos: Bool
-    var estado: String // Guardado como string para Firestore
+    var estado: String
     var fechaCreacion: Timestamp?
     var fechaActualizacion: Timestamp?
     
-    // Computed property para obtener el enum
     var estadoEnum: EstadoSolicitud {
         EstadoSolicitud(rawValue: estado) ?? .pendiente
     }

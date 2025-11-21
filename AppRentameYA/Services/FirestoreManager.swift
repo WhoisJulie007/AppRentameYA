@@ -19,7 +19,6 @@ class FirestoreManager: ObservableObject {
                     return
                 }
 
-                // 👇 Aquí forzamos el tipo [VehiculoModel]
                 let nuevos: [VehiculoModel] = snapshot?.documents.compactMap { doc -> VehiculoModel? in
                     let data = doc.data()
 

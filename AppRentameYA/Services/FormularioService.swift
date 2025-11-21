@@ -63,8 +63,8 @@ class FormularioService: ObservableObject {
         // Subir el archivo
         do {
             let uploadMetadata = try await storageRef.putDataAsync(imageData, metadata: metadata)
-            print("✅ Imagen subida exitosamente")
-            print("📋 Metadata recibida: path=\(uploadMetadata.path ?? "nil"), size=\(uploadMetadata.size)")
+            print("Imagen subida exitosamente")
+            print("Metadata recibida: path=\(uploadMetadata.path ?? "nil"), size=\(uploadMetadata.size)")
             
             // Esperar un momento para que el archivo esté completamente disponible
             try await Task.sleep(nanoseconds: 500_000_000) // 0.5 segundos
@@ -76,11 +76,11 @@ class FormularioService: ObservableObject {
             for attempt in 1...3 {
                 do {
                     downloadURL = try await storageRef.downloadURLAsync()
-                    print("🔗 URL obtenida en intento \(attempt): \(downloadURL?.absoluteString ?? "nil")")
+                    print("URL obtenida en intento \(attempt): \(downloadURL?.absoluteString ?? "nil")")
                     break
                 } catch {
                     lastError = error
-                    print("⚠️ Intento \(attempt) falló: \(error.localizedDescription)")
+                    print("Intento \(attempt) falló: \(error.localizedDescription)")
                     if attempt < 3 {
                         // Esperar un poco más antes del siguiente intento
                         try await Task.sleep(nanoseconds: 1_000_000_000) // 1 segundo
@@ -99,7 +99,7 @@ class FormularioService: ObservableObject {
             return finalURL.absoluteString
             
         } catch {
-            print("❌ Error completo al subir/licencia: \(error.localizedDescription)")
+            print("Error completo al subir/licencia: \(error.localizedDescription)")
             throw NSError(
                 domain: "FormularioService",
                 code: 4,
@@ -164,13 +164,12 @@ class FormularioService: ObservableObject {
     }
 }
 
-// Extensión para hacer putDataAsync compatible con async/await
 extension StorageReference {
     func putDataAsync(_ data: Data, metadata: StorageMetadata?) async throws -> StorageMetadata {
         return try await withCheckedThrowingContinuation { continuation in
             self.putData(data, metadata: metadata) { metadata, error in
                 if let error = error {
-                    print("❌ Error al subir archivo: \(error.localizedDescription)")
+                    print("Error al subir archivo: \(error.localizedDescription)")
                     continuation.resume(throwing: error)
                 } else if let metadata = metadata {
                     continuation.resume(returning: metadata)
@@ -185,7 +184,7 @@ extension StorageReference {
         return try await withCheckedThrowingContinuation { continuation in
             self.downloadURL { url, error in
                 if let error = error {
-                    print("❌ Error al obtener URL: \(error.localizedDescription)")
+                    print("Error al obtener URL: \(error.localizedDescription)")
                     continuation.resume(throwing: error)
                 } else if let url = url {
                     continuation.resume(returning: url)
