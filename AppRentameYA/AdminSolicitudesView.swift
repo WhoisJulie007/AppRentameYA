@@ -13,7 +13,7 @@ struct AdminSolicitudesView: View {
         VStack(spacing: 0) {
             // Header
             HStack {
-                Text("Solicitudes de Renta")
+                Text(LocalizedKey.rentalApplications.localized)
                     .font(.title2)
                     .fontWeight(.bold)
                 Spacer()
@@ -33,7 +33,7 @@ struct AdminSolicitudesView: View {
             // Lista de solicitudes
             if solicitudesService.isLoading {
                 Spacer()
-                ProgressView("Cargando solicitudes...")
+                ProgressView(LocalizedKey.loadingApplications.localized)
                 Spacer()
             } else if solicitudesService.solicitudes.isEmpty {
                 Spacer()
@@ -41,7 +41,7 @@ struct AdminSolicitudesView: View {
                     Image(systemName: "doc.text.magnifyingglass")
                         .font(.system(size: 60))
                         .foregroundColor(.gray)
-                    Text("No hay solicitudes")
+                    Text(LocalizedKey.noApplicationsFound.localized)
                         .font(.headline)
                         .foregroundColor(.gray)
                 }
@@ -112,7 +112,7 @@ struct SolicitudCardView: View {
                     }) {
                         HStack {
                             Image(systemName: "xmark.circle")
-                            Text("Rechazar")
+                            Text(LocalizedKey.reject.localized)
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
@@ -132,7 +132,7 @@ struct SolicitudCardView: View {
                     }) {
                         HStack {
                             Image(systemName: "checkmark.circle")
-                            Text("Aprobar")
+                            Text(LocalizedKey.approve.localized)
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
@@ -149,7 +149,7 @@ struct SolicitudCardView: View {
             }) {
                 HStack {
                     Image(systemName: "photo")
-                    Text("Ver Licencia")
+                    Text(LocalizedKey.viewLicense.localized)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 10)

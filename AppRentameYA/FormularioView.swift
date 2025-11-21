@@ -22,8 +22,8 @@ struct FormularioView: View {
                 formularioContent
             }
         }
-        .alert("Error", isPresented: .constant(vm.errorMessage != nil)) {
-            Button("OK") {
+        .alert(LocalizedKey.error.localized, isPresented: .constant(vm.errorMessage != nil)) {
+            Button(LocalizedKey.ok.localized) {
                 vm.errorMessage = nil
             }
         } message: {
@@ -39,18 +39,18 @@ struct FormularioView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
                     // Título
-                    Text("Aplicar para \(vm.form.vehiculoNombre)")
+                    Text(String(format: LocalizedKey.applyFor.localized, vm.form.vehiculoNombre))
                         .font(.largeTitle).bold()
                         .padding(.top, 8)
                     
-                    Text("Completa tus datos. Un asesor te contactará a la brevedad.")
+                    Text(LocalizedKey.completeData.localized)
                         .foregroundColor(.gray)
                         .font(.subheadline)
                     
                     // Mensaje si ya tiene solicitud para este vehículo
                     if vm.yaTieneSolicitud {
                         InfoBanner(
-                            texto: "Ya tienes una solicitud pendiente o aprobada para este vehículo. Puedes aplicar a otros vehículos diferentes.",
+                            texto: "\(LocalizedKey.alreadyHasApplication.localized) \(LocalizedKey.canApplyOtherVehicles.localized)",
                             color: .orange,
                             mostrarTitulo: false
                         )
@@ -58,8 +58,8 @@ struct FormularioView: View {
                     
                     // Nombre
                     Group {
-                        Text("Nombre completo").bold()
-                        TextField("Tu nombre y apellido", text: $vm.form.nombreCompleto)
+                        Text(LocalizedKey.fullName.localized).bold()
+                        TextField(LocalizedKey.namePlaceholder.localized, text: $vm.form.nombreCompleto)
                             .textContentType(.name)
                             .submitLabel(.next)
                             .padding()
@@ -69,15 +69,15 @@ struct FormularioView: View {
                     
                     // Teléfono
                     Group {
-                        Text("Teléfono de contacto").bold()
-                        TextField("10 dígitos", text: $vm.form.telefono)
+                        Text(LocalizedKey.phoneContact.localized).bold()
+                        TextField(LocalizedKey.phonePlaceholder.localized, text: $vm.form.telefono)
                             .keyboardType(.numberPad)
                             .padding()
                             .background(Color(.systemGray6))
                             .cornerRadius(12)
                         
                         if !vm.telefonoValido && !vm.form.telefono.isEmpty {
-                            Text("El teléfono debe tener exactamente 10 dígitos (tienes \(vm.form.telefonoSoloDigitos.count))")
+                            Text(String(format: LocalizedKey.phoneDigits.localized, vm.form.telefonoSoloDigitos.count))
                                 .font(.caption)
                                 .foregroundColor(.red)
                                 .padding(.top, 4)
@@ -86,12 +86,12 @@ struct FormularioView: View {
                     
                     // Archivo licencia
                     Group {
-                        Text("Licencia de conducir (frente)").bold()
+                        Text(LocalizedKey.driverLicense.localized).bold()
                         DashedDropZone(image: $vm.form.licenciaFrente)
                     }
                     
                     // Banner depósito
-                    InfoBanner(texto: "Se requiere un depósito de $3,500 MXN al firmar el contrato.")
+                    InfoBanner(texto: LocalizedKey.depositBanner.localized)
                     
                     // Checkbox de consentimiento
                     VStack(alignment: .leading, spacing: 8) {
@@ -104,13 +104,13 @@ struct FormularioView: View {
                                     .font(.title3)
                             }
                             
-                            Text("Estoy de acuerdo en que mis datos personales (nombre, teléfono e imagen de licencia) sean utilizados para el proceso de evaluación de mi solicitud de renta de vehículo y para contactarme respecto a esta solicitud.")
+                            Text(LocalizedKey.termsAgreement.localized)
                                 .font(.subheadline)
                                 .foregroundColor(.primary)
                         }
                         
                         if !vm.terminosAceptados && vm.form.nombreCompleto.count > 0 {
-                            Text("Debes aceptar los términos para continuar")
+                            Text(LocalizedKey.mustAcceptTerms.localized)
                                 .font(.caption)
                                 .foregroundColor(.red)
                         }
@@ -136,7 +136,7 @@ struct FormularioView: View {
                                 .progressViewStyle(CircularProgressViewStyle(tint: .white))
                                 .scaleEffect(0.8)
                         }
-                        Text(vm.isLoading ? "Enviando..." : "Enviar Aplicación")
+                        Text(vm.isLoading ? LocalizedKey.sending.localized : LocalizedKey.sendApplication.localized)
                             .fontWeight(.semibold)
                     }
                     .frame(maxWidth: .infinity)
@@ -152,18 +152,18 @@ struct FormularioView: View {
                 Divider()
                 HStack {
                     Spacer()
-                    TabBarItemVisual(title: "Inicio", imageName: "house.fill", isSelected: false)
+                    TabBarItemVisual(title: LocalizedKey.inicio.localized, imageName: "house.fill", isSelected: false)
                     Spacer()
-                    TabBarItemVisual(title: "Vehículos", imageName: "car.fill", isSelected: true)
+                    TabBarItemVisual(title: LocalizedKey.vehiculos.localized, imageName: "car.fill", isSelected: true)
                     Spacer()
-                    TabBarItemVisual(title: "Perfil", imageName: "person.fill", isSelected: false)
+                    TabBarItemVisual(title: LocalizedKey.perfil.localized, imageName: "person.fill", isSelected: false)
                     Spacer()
                 }
                 .padding(.vertical, 8)
                 .background(Color.white)
             }
         }
-        .navigationTitle("Vehículos")
+        .navigationTitle(LocalizedKey.vehiculos.localized)
         .navigationBarTitleDisplayMode(.inline)
     }
 }

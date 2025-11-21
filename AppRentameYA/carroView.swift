@@ -27,7 +27,7 @@ struct CarroCardView: View {
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.blue)
-                Text("/ \(periodo)")
+                Text("/ \(LocalizedKey.week.localized)")
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
@@ -46,7 +46,7 @@ struct CarroCardView: View {
             Spacer()
             
             NavigationLink(destination: FormularioView(vehiculoNombre: nombre)) {
-                Text("Aplicar ahora")
+                Text(LocalizedKey.applyNow.localized)
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
                     .padding()

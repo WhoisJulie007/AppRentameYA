@@ -1,0 +1,100 @@
+/* 
+  Localizable.strings (Japanese)
+  AppRentameYA
+*/
+
+// Welcome Screen
+"app_name" = "RentameYa";
+"welcome_subtitle" = "車をレンタルして今日から稼ぎ始めましょう。";
+
+// Navigation
+"inicio" = "ホーム";
+"vehiculos" = "車両";
+"perfil" = "プロフィール";
+
+// Home Screen
+"hello_driver" = "こんにちは、ドライバー！";
+"welcome_message" = "コントロールセンターへようこそ。ここでは、車両の状態を確認し、次の車を見つけて収益を続けることができます。";
+"my_applications" = "私の申請";
+"no_applications" = "申請がありません";
+"ready_to_start" = "始める準備はできましたか？";
+"ready_to_start_message" = "「車両」セクションに移動して、利用可能な車を確認してください。";
+"our_benefits" = "私たちのメリット";
+"benefit_1" = "包括的な保険が含まれています。";
+"benefit_2" = "予防メンテナンスがカバーされています。";
+"benefit_3" = "プラットフォーム（Uber/DiDi）対応の車。";
+
+// Profile
+"my_profile" = "マイプロフィール";
+"user" = "ユーザー";
+"administrator" = "管理者";
+"review_applications" = "申請を確認";
+"add_vehicle" = "車両を追加";
+"sign_out" = "サインアウト";
+
+// Form
+"apply_for" = "%@に申請";
+"complete_data" = "情報を入力してください。アドバイザーがすぐに連絡いたします。";
+"full_name" = "氏名";
+"name_placeholder" = "お名前と名字";
+"phone_contact" = "連絡先電話番号";
+"phone_placeholder" = "10桁";
+"phone_digits" = "電話番号は正確に10桁である必要があります（現在%d桁）";
+"driver_license" = "運転免許証（表面）";
+"deposit_banner" = "契約時に3,500 MXNの保証金が必要です。";
+"deposit_title" = "保証金：";
+"terms_agreement" = "私の個人データ（名前、電話番号、免許証の画像）が、車両レンタル申請の評価プロセスと、この申請に関する連絡に使用されることに同意します。";
+"must_accept_terms" = "続行するには条件を承認する必要があります";
+"send_application" = "申請を送信";
+"sending" = "送信中...";
+"already_has_application" = "この車両に対して保留中または承認済みの申請が既にあります。";
+"can_apply_other_vehicles" = "他の異なる車両に申請できます。";
+
+// Application Status
+"pending" = "保留中";
+"in_review" = "審査中";
+"approved" = "承認済み";
+"rejected" = "却下";
+
+// Application Sent
+"application_sent" = "申請が送信されました！";
+"application_sent_message" = "情報を受け取りました。次のステップについてすぐにご連絡いたします。";
+"back_to_vehicles" = "車両に戻る";
+
+// Admin
+"rental_applications" = "レンタル申請";
+"no_applications_found" = "申請がありません";
+"loading_applications" = "申請を読み込み中...";
+"approve" = "承認";
+"reject" = "却下";
+"view_license" = "免許証を表示";
+"vehicle" = "車両";
+
+// Add Vehicle
+"add_new_vehicle" = "新しい車両を追加";
+"vehicle_name" = "車両名";
+"vehicle_name_placeholder" = "例：日産ヴェルサ";
+"price_per_week" = "週間料金（MXN）";
+"price_placeholder" = "例：2100";
+"characteristics" = "特徴";
+"add_characteristic_hint" = "一度に1つの特徴を追加し、Enterキーを押してください";
+"characteristic_placeholder" = "例：オートマチック";
+"save_vehicle" = "車両を保存";
+"saving" = "保存中...";
+
+// Common
+"week" = "週";
+"apply_now" = "今すぐ申請";
+
+// Errors
+"error" = "エラー";
+"ok" = "OK";
+"close" = "閉じる";
+"please_upload_license" = "免許証の写真をアップロードしてください";
+"error_saving_vehicle" = "車両の保存エラー: %@";
+"only_admins_can_add_vehicles" = "管理者のみが車両を追加できます";
+"price_must_be_valid" = "価格は有効な数値である必要があります";
+"unauthorized_user" = "認証されていないユーザー";
+"error_converting_image" = "画像の変換エラー";
+"error_uploading_image" = "画像のアップロードエラー: %@。Storageが有効になっていることと、セキュリティルールが正しく設定されていることを確認してください。";
+

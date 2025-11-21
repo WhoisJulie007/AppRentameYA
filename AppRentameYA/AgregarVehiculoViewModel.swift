@@ -34,12 +34,12 @@ class AgregarVehiculoViewModel: ObservableObject {
     func guardarVehiculo(firestoreManager: FirestoreManager) async {
         // Verificar que es admin
         guard Auth.auth().currentUser?.email == adminEmail else {
-            errorMessage = "Solo los administradores pueden agregar vehículos"
+            errorMessage = LocalizedKey.onlyAdminsCanAddVehicles.localized
             return
         }
         
         guard let precioValor = precio else {
-            errorMessage = "El precio debe ser un número válido"
+            errorMessage = LocalizedKey.priceMustBeValid.localized
             return
         }
         
@@ -69,7 +69,7 @@ class AgregarVehiculoViewModel: ObservableObject {
             
         } catch {
             isLoading = false
-            errorMessage = "Error al guardar el vehículo: \(error.localizedDescription)"
+            errorMessage = String(format: LocalizedKey.errorSavingVehicle.localized, error.localizedDescription)
         }
     }
 }

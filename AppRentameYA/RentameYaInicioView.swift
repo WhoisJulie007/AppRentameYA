@@ -11,9 +11,9 @@ struct RentameYaInicioView: View {
                 // Tarjeta de bienvenida
                 CardView {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("¡Hola, Conductor!")
+                        Text(LocalizedKey.helloDriver.localized)
                             .font(.system(.title3, design: .rounded).bold())
-                        Text("Bienvenido a tu centro de control. Aquí podrás ver el estado de tu vehículo y encontrar tu próximo auto para seguir ganando.")
+                        Text(LocalizedKey.welcomeMessage.localized)
                             .font(.system(size: 16))
                             .foregroundStyle(.secondary)
                     }
@@ -23,7 +23,7 @@ struct RentameYaInicioView: View {
                 CardView {
                     VStack(alignment: .leading, spacing: 12) {
                         HStack {
-                            Text("Mis Solicitudes")
+                            Text(LocalizedKey.myApplications.localized)
                                 .font(.system(.title3, design: .rounded).bold())
                             Spacer()
                             if solicitudesService.isLoading {
@@ -37,7 +37,7 @@ struct RentameYaInicioView: View {
                                 Image(systemName: "doc.text")
                                     .font(.system(size: 40))
                                     .foregroundColor(.gray)
-                                Text("No tienes solicitudes")
+                                Text(LocalizedKey.noApplications.localized)
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }
@@ -59,10 +59,10 @@ struct RentameYaInicioView: View {
                     borderColor: .blue
                 ) {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("¿Listo para empezar?")
+                        Text(LocalizedKey.readyToStart.localized)
                             .font(.headline)
                             .foregroundColor(.blue)
-                        Text("Navega a la sección de \"Vehículos\" para ver los autos que tenemos disponibles para ti.")
+                        Text(LocalizedKey.readyToStartMessage.localized)
                             .font(.system(size: 16))
                             .foregroundColor(.blue)
                     }
@@ -71,12 +71,12 @@ struct RentameYaInicioView: View {
                 // Beneficios
                 CardView {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Nuestros Beneficios")
+                        Text(LocalizedKey.ourBenefits.localized)
                             .font(.system(.title3, design: .rounded).bold())
                         
-                        BenefitRow(text: "Seguro de cobertura amplia incluido.")
-                        BenefitRow(text: "Mantenimientos preventivos cubiertos.")
-                        BenefitRow(text: "Autos listos para plataformas (Uber/DiDi).")
+                        BenefitRow(text: LocalizedKey.benefit1.localized)
+                        BenefitRow(text: LocalizedKey.benefit2.localized)
+                        BenefitRow(text: LocalizedKey.benefit3.localized)
                     }
                 }
                 
@@ -85,7 +85,7 @@ struct RentameYaInicioView: View {
             .padding(.top, 20)
         }
         .background(Color(UIColor.systemGroupedBackground))
-        .navigationBarTitle("Inicio")
+        .navigationBarTitle(LocalizedKey.inicio.localized)
         .navigationBarTitleDisplayMode(.large)
         .onAppear {
             // Iniciar listener para actualizaciones en tiempo real

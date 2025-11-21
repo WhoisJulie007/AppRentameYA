@@ -15,40 +15,40 @@ struct AgregarVehiculoView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     // Título
-                    Text("Agregar Nuevo Vehículo")
+                    Text(LocalizedKey.addNewVehicle.localized)
                         .font(.largeTitle)
                         .bold()
                         .padding(.top, 8)
                     
                     // Nombre del vehículo
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Nombre del vehículo")
+                        Text(LocalizedKey.vehicleName.localized)
                             .font(.headline)
-                        TextField("Ej: Nissan Versa", text: $viewModel.nombre)
+                        TextField(LocalizedKey.vehicleNamePlaceholder.localized, text: $viewModel.nombre)
                             .textFieldStyle(.roundedBorder)
                     }
                     
                     // Precio por semana
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Precio por semana (MXN)")
+                        Text(LocalizedKey.pricePerWeek.localized)
                             .font(.headline)
-                        TextField("Ej: 2100", text: $viewModel.precioTexto)
+                        TextField(LocalizedKey.pricePlaceholder.localized, text: $viewModel.precioTexto)
                             .keyboardType(.numberPad)
                             .textFieldStyle(.roundedBorder)
                     }
                     
                     // Características
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Características")
+                        Text(LocalizedKey.characteristics.localized)
                             .font(.headline)
                         
-                        Text("Agrega una característica a la vez y presiona Enter")
+                        Text(LocalizedKey.addCharacteristicHint.localized)
                             .font(.caption)
                             .foregroundColor(.gray)
                         
                         // Campo para agregar características
                         HStack {
-                            TextField("Ej: Automático", text: $viewModel.nuevaCaracteristica)
+                            TextField(LocalizedKey.characteristicPlaceholder.localized, text: $viewModel.nuevaCaracteristica)
                                 .textFieldStyle(.roundedBorder)
                                 .onSubmit {
                                     agregarCaracteristica()
@@ -113,7 +113,7 @@ struct AgregarVehiculoView: View {
                                     .progressViewStyle(CircularProgressViewStyle(tint: .white))
                                     .scaleEffect(0.8)
                             }
-                            Text(viewModel.isLoading ? "Guardando..." : "Guardar Vehículo")
+                            Text(viewModel.isLoading ? LocalizedKey.saving.localized : LocalizedKey.saveVehicle.localized)
                                 .fontWeight(.semibold)
                         }
                         .frame(maxWidth: .infinity)
@@ -131,7 +131,7 @@ struct AgregarVehiculoView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Cerrar") {
+                    Button(LocalizedKey.close.localized) {
                         dismiss()
                     }
                 }

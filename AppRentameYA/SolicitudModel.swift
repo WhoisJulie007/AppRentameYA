@@ -32,10 +32,10 @@ struct SolicitudModel: Identifiable, Codable {
         
         var displayName: String {
             switch self {
-            case .pendiente: return "Pendiente"
-            case .enRevision: return "En Revisión"
-            case .aprobada: return "Aprobada"
-            case .rechazada: return "Rechazada"
+            case .pendiente: return LocalizedKey.pending.localized
+            case .enRevision: return LocalizedKey.inReview.localized
+            case .aprobada: return LocalizedKey.approved.localized
+            case .rechazada: return LocalizedKey.rejected.localized
             }
         }
         

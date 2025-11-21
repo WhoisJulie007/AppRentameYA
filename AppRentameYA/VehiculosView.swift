@@ -16,7 +16,7 @@ struct VehiculosView: View {
             VStack(spacing: 0) {
                 // Encabezado
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Vehículos")
+                    Text(LocalizedKey.vehiculos.localized)
                         .font(.largeTitle).bold()
                     Divider()
                 }

@@ -43,7 +43,7 @@ class FormularioService: ObservableObject {
     /// Sube la imagen de la licencia a Firebase Storage
     private func subirLicencia(_ imagen: UIImage, userId: String) async throws -> String {
         guard let imageData = imagen.jpegData(compressionQuality: 0.8) else {
-            throw NSError(domain: "FormularioService", code: 1, userInfo: [NSLocalizedDescriptionKey: "Error al convertir imagen"])
+            throw NSError(domain: "FormularioService", code: 1, userInfo: [NSLocalizedDescriptionKey: LocalizedKey.errorConvertingImage.localized])
         }
         
         // Limpiar el userId para evitar caracteres problemáticos en el nombre del archivo
@@ -103,7 +103,7 @@ class FormularioService: ObservableObject {
             throw NSError(
                 domain: "FormularioService",
                 code: 4,
-                userInfo: [NSLocalizedDescriptionKey: "Error al subir la imagen: \(error.localizedDescription). Verifica que Storage esté habilitado y las reglas de seguridad estén configuradas correctamente."]
+                userInfo: [NSLocalizedDescriptionKey: String(format: LocalizedKey.errorUploadingImage.localized, error.localizedDescription)]
             )
         }
     }
@@ -117,7 +117,7 @@ class FormularioService: ObservableObject {
     ) async throws {
         guard let userId = Auth.auth().currentUser?.uid,
               let userEmail = Auth.auth().currentUser?.email else {
-            throw NSError(domain: "FormularioService", code: 2, userInfo: [NSLocalizedDescriptionKey: "Usuario no autenticado"])
+            throw NSError(domain: "FormularioService", code: 2, userInfo: [NSLocalizedDescriptionKey: LocalizedKey.unauthorizedUser.localized])
         }
         
         isLoading = true

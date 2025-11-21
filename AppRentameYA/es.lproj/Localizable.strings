@@ -1,0 +1,100 @@
+/* 
+  Localizable.strings (Spanish)
+  AppRentameYA
+*/
+
+// Welcome Screen
+"app_name" = "RentameYa";
+"welcome_subtitle" = "Renta un auto y empieza a ganar hoy.";
+
+// Navigation
+"inicio" = "Inicio";
+"vehiculos" = "Vehículos";
+"perfil" = "Perfil";
+
+// Home Screen
+"hello_driver" = "¡Hola, Conductor!";
+"welcome_message" = "Bienvenido a tu centro de control. Aquí podrás ver el estado de tu vehículo y encontrar tu próximo auto para seguir ganando.";
+"my_applications" = "Mis Solicitudes";
+"no_applications" = "No tienes solicitudes";
+"ready_to_start" = "¿Listo para empezar?";
+"ready_to_start_message" = "Navega a la sección de \"Vehículos\" para ver los autos que tenemos disponibles para ti.";
+"our_benefits" = "Nuestros Beneficios";
+"benefit_1" = "Seguro de cobertura amplia incluido.";
+"benefit_2" = "Mantenimientos preventivos cubiertos.";
+"benefit_3" = "Autos listos para plataformas (Uber/DiDi).";
+
+// Profile
+"my_profile" = "Mi Perfil";
+"user" = "Usuario";
+"administrator" = "Administrador";
+"review_applications" = "Revisar Solicitudes";
+"add_vehicle" = "Agregar Vehículo";
+"sign_out" = "Cerrar Sesión";
+
+// Form
+"apply_for" = "Aplicar para %@";
+"complete_data" = "Completa tus datos. Un asesor te contactará a la brevedad.";
+"full_name" = "Nombre completo";
+"name_placeholder" = "Tu nombre y apellido";
+"phone_contact" = "Teléfono de contacto";
+"phone_placeholder" = "10 dígitos";
+"phone_digits" = "El teléfono debe tener exactamente 10 dígitos (tienes %d)";
+"driver_license" = "Licencia de conducir (frente)";
+"deposit_banner" = "Se requiere un depósito de $3,500 MXN al firmar el contrato.";
+"deposit_title" = "Depósito en garantía:";
+"terms_agreement" = "Estoy de acuerdo en que mis datos personales (nombre, teléfono e imagen de licencia) sean utilizados para el proceso de evaluación de mi solicitud de renta de vehículo y para contactarme respecto a esta solicitud.";
+"must_accept_terms" = "Debes aceptar los términos para continuar";
+"send_application" = "Enviar Aplicación";
+"sending" = "Enviando...";
+"already_has_application" = "Ya tienes una solicitud pendiente o aprobada para este vehículo.";
+"can_apply_other_vehicles" = "Puedes aplicar a otros vehículos diferentes.";
+
+// Application Status
+"pending" = "Pendiente";
+"in_review" = "En Revisión";
+"approved" = "Aprobada";
+"rejected" = "Rechazada";
+
+// Application Sent
+"application_sent" = "¡Solicitud Enviada!";
+"application_sent_message" = "Hemos recibido tus datos. Pronto nos pondremos en contacto contigo para los siguientes pasos.";
+"back_to_vehicles" = "Volver a Vehículos";
+
+// Admin
+"rental_applications" = "Solicitudes de Renta";
+"no_applications_found" = "No hay solicitudes";
+"loading_applications" = "Cargando solicitudes...";
+"approve" = "Aprobar";
+"reject" = "Rechazar";
+"view_license" = "Ver Licencia";
+"vehicle" = "Vehículo";
+
+// Add Vehicle
+"add_new_vehicle" = "Agregar Nuevo Vehículo";
+"vehicle_name" = "Nombre del vehículo";
+"vehicle_name_placeholder" = "Ej: Nissan Versa";
+"price_per_week" = "Precio por semana (MXN)";
+"price_placeholder" = "Ej: 2100";
+"characteristics" = "Características";
+"add_characteristic_hint" = "Agrega una característica a la vez y presiona Enter";
+"characteristic_placeholder" = "Ej: Automático";
+"save_vehicle" = "Guardar Vehículo";
+"saving" = "Guardando...";
+
+// Common
+"week" = "semana";
+"apply_now" = "Aplicar ahora";
+
+// Errors
+"error" = "Error";
+"ok" = "OK";
+"close" = "Cerrar";
+"please_upload_license" = "Por favor, sube una foto de tu licencia";
+"error_saving_vehicle" = "Error al guardar el vehículo: %@";
+"only_admins_can_add_vehicles" = "Solo los administradores pueden agregar vehículos";
+"price_must_be_valid" = "El precio debe ser un número válido";
+"unauthorized_user" = "Usuario no autenticado";
+"error_converting_image" = "Error al convertir imagen";
+"error_uploading_image" = "Error al subir la imagen: %@. Verifica que Storage esté habilitado y las reglas de seguridad estén configuradas correctamente.";
+

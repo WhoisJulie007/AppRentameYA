@@ -43,7 +43,7 @@ final class FormularioViewModel: ObservableObject {
     /// Envía la solicitud a Firebase
     func enviar() {
         guard let licencia = form.licenciaFrente else {
-            errorMessage = "Por favor, sube una foto de tu licencia"
+            errorMessage = LocalizedKey.pleaseUploadLicense.localized
             return
         }
         

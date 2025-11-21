@@ -1,0 +1,100 @@
+/* 
+  Localizable.strings (English)
+  AppRentameYA
+*/
+
+// Welcome Screen
+"app_name" = "RentameYa";
+"welcome_subtitle" = "Rent a car and start earning today.";
+
+// Navigation
+"inicio" = "Home";
+"vehiculos" = "Vehicles";
+"perfil" = "Profile";
+
+// Home Screen
+"hello_driver" = "Hello, Driver!";
+"welcome_message" = "Welcome to your control center. Here you can see your vehicle status and find your next car to keep earning.";
+"my_applications" = "My Applications";
+"no_applications" = "You have no applications";
+"ready_to_start" = "Ready to start?";
+"ready_to_start_message" = "Navigate to the \"Vehicles\" section to see the cars we have available for you.";
+"our_benefits" = "Our Benefits";
+"benefit_1" = "Comprehensive insurance included.";
+"benefit_2" = "Preventive maintenance covered.";
+"benefit_3" = "Cars ready for platforms (Uber/DiDi).";
+
+// Profile
+"my_profile" = "My Profile";
+"user" = "User";
+"administrator" = "Administrator";
+"review_applications" = "Review Applications";
+"add_vehicle" = "Add Vehicle";
+"sign_out" = "Sign Out";
+
+// Form
+"apply_for" = "Apply for %@";
+"complete_data" = "Complete your information. An advisor will contact you shortly.";
+"full_name" = "Full name";
+"name_placeholder" = "Your first and last name";
+"phone_contact" = "Contact phone";
+"phone_placeholder" = "10 digits";
+"phone_digits" = "Phone must have exactly 10 digits (you have %d)";
+"driver_license" = "Driver's license (front)";
+"deposit_banner" = "A deposit of $3,500 MXN is required when signing the contract.";
+"deposit_title" = "Security deposit:";
+"terms_agreement" = "I agree that my personal data (name, phone and license image) will be used for the evaluation process of my vehicle rental application and to contact me regarding this application.";
+"must_accept_terms" = "You must accept the terms to continue";
+"send_application" = "Send Application";
+"sending" = "Sending...";
+"already_has_application" = "You already have a pending or approved application for this vehicle.";
+"can_apply_other_vehicles" = "You can apply to other different vehicles.";
+
+// Application Status
+"pending" = "Pending";
+"in_review" = "In Review";
+"approved" = "Approved";
+"rejected" = "Rejected";
+
+// Application Sent
+"application_sent" = "Application Sent!";
+"application_sent_message" = "We have received your information. We will contact you soon for the next steps.";
+"back_to_vehicles" = "Back to Vehicles";
+
+// Admin
+"rental_applications" = "Rental Applications";
+"no_applications_found" = "No applications";
+"loading_applications" = "Loading applications...";
+"approve" = "Approve";
+"reject" = "Reject";
+"view_license" = "View License";
+"vehicle" = "Vehicle";
+
+// Add Vehicle
+"add_new_vehicle" = "Add New Vehicle";
+"vehicle_name" = "Vehicle name";
+"vehicle_name_placeholder" = "Ex: Nissan Versa";
+"price_per_week" = "Price per week (MXN)";
+"price_placeholder" = "Ex: 2100";
+"characteristics" = "Characteristics";
+"add_characteristic_hint" = "Add one characteristic at a time and press Enter";
+"characteristic_placeholder" = "Ex: Automatic";
+"save_vehicle" = "Save Vehicle";
+"saving" = "Saving...";
+
+// Common
+"week" = "week";
+"apply_now" = "Apply now";
+
+// Errors
+"error" = "Error";
+"ok" = "OK";
+"close" = "Close";
+"please_upload_license" = "Please upload a photo of your license";
+"error_saving_vehicle" = "Error saving vehicle: %@";
+"only_admins_can_add_vehicles" = "Only administrators can add vehicles";
+"price_must_be_valid" = "Price must be a valid number";
+"unauthorized_user" = "Unauthorized user";
+"error_converting_image" = "Error converting image";
+"error_uploading_image" = "Error uploading image: %@. Verify that Storage is enabled and security rules are configured correctly.";
+

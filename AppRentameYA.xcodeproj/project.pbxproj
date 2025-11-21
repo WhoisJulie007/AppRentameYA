@@ -248,11 +248,13 @@
 				};
 			};
 			buildConfigurationList = 6C12811C2EB2BB8B00A20ECA /* Build configuration list for PBXProject "AppRentameYA" */;
-			developmentRegion = en;
+			developmentRegion = es;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				es,
+				ja,
 			);
 			mainGroup = 6C1281182EB2BB8B00A20ECA;
 			minimizedProjectReferenceProxies = 1;

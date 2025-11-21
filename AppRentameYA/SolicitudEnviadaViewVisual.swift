@@ -28,12 +28,12 @@ struct SolicitudEnviadaViewVisual: View {
                     }
                     .padding(.bottom, 40)
                     
-                    Text("¡Solicitud Enviada!")
+                    Text(LocalizedKey.applicationSent.localized)
                         .font(.title)
                         .fontWeight(.bold)
                         .padding(.bottom, 10)
                     
-                    Text("Hemos recibido tus datos. Pronto nos pondremos en contacto contigo para los siguientes pasos.")
+                    Text(LocalizedKey.applicationSentMessage.localized)
                         .font(.body)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.gray)
@@ -44,7 +44,7 @@ struct SolicitudEnviadaViewVisual: View {
                     Button(action: {
                         dismiss()
                     }) {
-                        Text("Volver a Vehículos")
+                        Text(LocalizedKey.backToVehicles.localized)
                             .font(.headline)
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
@@ -64,11 +64,11 @@ struct SolicitudEnviadaViewVisual: View {
                 Divider()
                 HStack {
                     Spacer()
-                    TabBarItemVisual(title: "Inicio", imageName: "house.fill", isSelected: true)
+                    TabBarItemVisual(title: LocalizedKey.inicio.localized, imageName: "house.fill", isSelected: true)
                     Spacer()
-                    TabBarItemVisual(title: "Vehículos", imageName: "car.fill", isSelected: false)
+                    TabBarItemVisual(title: LocalizedKey.vehiculos.localized, imageName: "car.fill", isSelected: false)
                     Spacer()
-                    TabBarItemVisual(title: "Perfil", imageName: "person.fill", isSelected: false)
+                    TabBarItemVisual(title: LocalizedKey.perfil.localized, imageName: "person.fill", isSelected: false)
                     Spacer()
                 }
                 .padding(.vertical, 8)

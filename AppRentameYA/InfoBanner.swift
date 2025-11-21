@@ -15,7 +15,7 @@ struct InfoBanner: View {
             Image(systemName: color == .orange ? "exclamationmark.triangle.fill" : "info.circle.fill")
                 .font(.title3)
                 .foregroundColor(color)
-            Text(mostrarTitulo ? AttributedString("**Depósito en garantía:** \(texto)") : AttributedString(texto))
+            Text(mostrarTitulo ? AttributedString("**\(LocalizedKey.depositTitle.localized)** \(texto)") : AttributedString(texto))
                 .font(.subheadline)
         }
         .padding()

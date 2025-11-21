@@ -15,7 +15,7 @@ struct PerfilViewVisual: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                Text("Mi Perfil")
+                Text(LocalizedKey.myProfile.localized)
                     .font(.title2)
                     .fontWeight(.bold)
                 Spacer()
@@ -42,7 +42,7 @@ struct PerfilViewVisual: View {
                                 .fontWeight(.semibold)
                                 .foregroundColor(.black)
                         } else {
-                            Text("Usuario")
+                            Text(LocalizedKey.user.localized)
                                 .font(.title2)
                                 .fontWeight(.semibold)
                                 .foregroundColor(.black)
@@ -59,7 +59,7 @@ struct PerfilViewVisual: View {
                         if esAdmin {
                             HStack {
                                 Image(systemName: "shield.checkmark")
-                                Text("Administrador")
+                                Text(LocalizedKey.administrator.localized)
                             }
                             .font(.caption)
                             .fontWeight(.semibold)
@@ -86,7 +86,7 @@ struct PerfilViewVisual: View {
                             }) {
                                 HStack {
                                     Image(systemName: "list.bullet.clipboard")
-                                    Text("Revisar Solicitudes")
+                                    Text(LocalizedKey.reviewApplications.localized)
                                         .fontWeight(.semibold)
                                 }
                                 .frame(maxWidth: .infinity)
@@ -101,7 +101,7 @@ struct PerfilViewVisual: View {
                             }) {
                                 HStack {
                                     Image(systemName: "plus.circle.fill")
-                                    Text("Agregar Vehículo")
+                                    Text(LocalizedKey.addVehicle.localized)
                                         .fontWeight(.semibold)
                                 }
                                 .frame(maxWidth: .infinity)
@@ -120,7 +120,7 @@ struct PerfilViewVisual: View {
                     }) {
                         HStack {
                             Image(systemName: "arrow.right.square")
-                            Text("Cerrar Sesión")
+                            Text(LocalizedKey.signOut.localized)
                                 .fontWeight(.semibold)
                         }
                         .frame(maxWidth: .infinity)
@@ -141,7 +141,7 @@ struct PerfilViewVisual: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
-                            Button("Cerrar") {
+                            Button(LocalizedKey.close.localized) {
                                 mostrarAdmin = false
                             }
                         }

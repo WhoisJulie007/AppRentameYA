@@ -2,24 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-
-    <!-- URL Scheme para Google -->
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleTypeRole</key>
-            <string>Editor</string>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <!-- TU REVERSED CLIENT ID -->
-                <string>com.googleusercontent.apps.68902112128-oq7sjqh3peds3ki3a5n1urd7sjootkf9</string>
-            </array>
-        </dict>
-    </array>
-
-    <!-- ESTO ES LO QUE TE FALTABA -->
-    <key>GIDClientID</key>
-    <string>68902112128-oq7sjqh3peds3ki3a5n1urd7sjootkf9.apps.googleusercontent.com</string>
-
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.68902112128-oq7sjqh3peds3ki3a5n1urd7sjootkf9</string>
+			</array>
+		</dict>
+	</array>
+	<key>GIDClientID</key>
+	<string>68902112128-oq7sjqh3peds3ki3a5n1urd7sjootkf9.apps.googleusercontent.com</string>
 </dict>
 </plist>

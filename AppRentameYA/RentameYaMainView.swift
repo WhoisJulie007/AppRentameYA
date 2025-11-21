@@ -26,15 +26,15 @@ struct RentameYaMainView: View {
                 Divider()
                 HStack {
                     Spacer()
-                    TabItem(icon: "house.fill", title: "Inicio", isSelected: selectedTab == .inicio) {
+                    TabItem(icon: "house.fill", title: LocalizedKey.inicio.localized, isSelected: selectedTab == .inicio) {
                         selectedTab = .inicio
                     }
                     Spacer()
-                    TabItem(icon: "car.fill", title: "Vehículos", isSelected: selectedTab == .vehiculos) {
+                    TabItem(icon: "car.fill", title: LocalizedKey.vehiculos.localized, isSelected: selectedTab == .vehiculos) {
                         selectedTab = .vehiculos
                     }
                     Spacer()
-                    TabItem(icon: "person.fill", title: "Perfil", isSelected: selectedTab == .perfil) {
+                    TabItem(icon: "person.fill", title: LocalizedKey.perfil.localized, isSelected: selectedTab == .perfil) {
                         selectedTab = .perfil
                     }
                     Spacer()
