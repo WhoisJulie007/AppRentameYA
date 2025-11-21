@@ -70,11 +70,38 @@ class SolicitudesService: ObservableObject {
             }
             
             isLoading = false
+            print("✅ Solicitudes obtenidas: \(solicitudes.count)")
         } catch {
             isLoading = false
             errorMessage = error.localizedDescription
             print("❌ Error al obtener mis solicitudes: \(error.localizedDescription)")
         }
+    }
+    
+    /// Inicia un listener para actualizar las solicitudes en tiempo real
+    func iniciarListenerMisSolicitudes() {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        db.collection("solicitudes")
+            .whereField("userId", isEqualTo: userId)
+            .order(by: "fechaCreacion", descending: true)
+            .addSnapshotListener { [weak self] snapshot, error in
+                guard let self = self else { return }
+                
+                if let error = error {
+                    print("❌ Error en listener de solicitudes: \(error.localizedDescription)")
+                    return
+                }
+                
+                Task { @MainActor in
+                    self.solicitudes = snapshot?.documents.compactMap { doc in
+                        try? doc.data(as: SolicitudModel.self)
+                    } ?? []
+                    print("🔄 Solicitudes actualizadas en tiempo real: \(self.solicitudes.count)")
+                }
+            }
     }
     
     /// Aprobar una solicitud

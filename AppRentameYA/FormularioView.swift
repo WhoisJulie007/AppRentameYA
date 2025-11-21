@@ -47,10 +47,10 @@ struct FormularioView: View {
                         .foregroundColor(.gray)
                         .font(.subheadline)
                     
-                    // Mensaje si ya tiene solicitud
+                    // Mensaje si ya tiene solicitud para este vehículo
                     if vm.yaTieneSolicitud {
                         InfoBanner(
-                            texto: "Ya tienes una solicitud pendiente. No puedes enviar otra hasta que se procese la actual.",
+                            texto: "Ya tienes una solicitud pendiente o aprobada para este vehículo. Puedes aplicar a otros vehículos diferentes.",
                             color: .orange,
                             mostrarTitulo: false
                         )
@@ -75,6 +75,13 @@ struct FormularioView: View {
                             .padding()
                             .background(Color(.systemGray6))
                             .cornerRadius(12)
+                        
+                        if !vm.telefonoValido && !vm.form.telefono.isEmpty {
+                            Text("El teléfono debe tener exactamente 10 dígitos (tienes \(vm.form.telefonoSoloDigitos.count))")
+                                .font(.caption)
+                                .foregroundColor(.red)
+                                .padding(.top, 4)
+                        }
                     }
                     
                     // Archivo licencia
@@ -120,7 +127,7 @@ struct FormularioView: View {
             }
             .background(Color(.systemGroupedBackground))
             
-            // Botón enviar
+                    // Botón enviar
             VStack(spacing: 8) {
                 Button(action: vm.enviar) {
                     HStack {

@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 
 struct PerfilViewVisual: View {
     @EnvironmentObject var auth: AuthViewModel
@@ -184,6 +185,22 @@ struct PerfilViewVisual: View {
             AgregarVehiculoView(firestoreManager: firestoreManager)
         }
         .onAppear {
+            // Iniciar listener para actualizaciones en tiempo real
+            solicitudesService.iniciarListenerMisSolicitudes()
+            
+            // También cargar una vez al aparecer
+            Task {
+                await solicitudesService.obtenerMisSolicitudes()
+            }
+        }
+        .onChange(of: auth.user?.uid) { _ in
+            // Refrescar cuando cambia el usuario
+            Task {
+                await solicitudesService.obtenerMisSolicitudes()
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("NuevaSolicitudEnviada"))) { _ in
+            // Refrescar cuando se envía una nueva solicitud
             Task {
                 await solicitudesService.obtenerMisSolicitudes()
             }

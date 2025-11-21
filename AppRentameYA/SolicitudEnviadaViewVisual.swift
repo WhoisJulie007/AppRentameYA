@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct SolicitudEnviadaViewVisual: View {
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
@@ -39,14 +41,18 @@ struct SolicitudEnviadaViewVisual: View {
                         .padding(.bottom, 60)
                     
                     
-                    Text("Volver al Inicio")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(8)
-                        .padding(.horizontal, 40)
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        Text("Volver a Vehículos")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(8)
+                    }
+                    .padding(.horizontal, 40)
                     
                     Spacer()
                     Spacer()

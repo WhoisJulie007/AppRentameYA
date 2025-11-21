@@ -18,6 +18,8 @@ final class FormularioViewModel: ObservableObject {
     
     init(vehiculoNombre: String) {
         self.form = .init(vehiculoNombre: vehiculoNombre)
+        // Inicializar yaTieneSolicitud en false para que el botón no esté bloqueado mientras verifica
+        self.yaTieneSolicitud = false
         Task {
             await verificarSolicitudExistente()
         }
@@ -33,9 +35,9 @@ final class FormularioViewModel: ObservableObject {
         !yaTieneSolicitud && nombreValido && telefonoValido && licenciaSubida && terminosAceptados && !isLoading
     }
     
-    /// Verifica si el usuario ya tiene una solicitud pendiente
+    /// Verifica si el usuario ya tiene una solicitud pendiente para este vehículo
     func verificarSolicitudExistente() async {
-        yaTieneSolicitud = await formularioService.verificarSolicitudExistente()
+        yaTieneSolicitud = await formularioService.verificarSolicitudExistente(paraVehiculo: form.vehiculoNombre)
     }
     
     /// Envía la solicitud a Firebase

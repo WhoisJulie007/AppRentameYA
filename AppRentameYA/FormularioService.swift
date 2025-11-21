@@ -18,8 +18,8 @@ class FormularioService: ObservableObject {
     @Published var errorMessage: String?
     @Published var solicitudEnviada = false
     
-    /// Verifica si el usuario actual ya tiene una solicitud pendiente o aprobada
-    func verificarSolicitudExistente() async -> Bool {
+    /// Verifica si el usuario actual ya tiene una solicitud para un vehículo específico
+    func verificarSolicitudExistente(paraVehiculo vehiculoNombre: String) async -> Bool {
         guard let userId = Auth.auth().currentUser?.uid else {
             return false
         }
@@ -27,6 +27,7 @@ class FormularioService: ObservableObject {
         do {
             let snapshot = try await db.collection("solicitudes")
                 .whereField("userId", isEqualTo: userId)
+                .whereField("vehiculoNombre", isEqualTo: vehiculoNombre)
                 .whereField("estado", in: ["pendiente", "en_revision", "aprobada"])
                 .limit(to: 1)
                 .getDocuments()
@@ -34,6 +35,7 @@ class FormularioService: ObservableObject {
             return !snapshot.documents.isEmpty
         } catch {
             print("Error al verificar solicitud existente: \(error.localizedDescription)")
+            // En caso de error, permitir que intente enviar (mejor UX)
             return false
         }
     }
@@ -122,10 +124,10 @@ class FormularioService: ObservableObject {
         errorMessage = nil
         
         do {
-            // Verificar si ya tiene una solicitud
-            let tieneSolicitud = await verificarSolicitudExistente()
+            // Verificar si ya tiene una solicitud para este vehículo específico
+            let tieneSolicitud = await verificarSolicitudExistente(paraVehiculo: vehiculoNombre)
             if tieneSolicitud {
-                throw NSError(domain: "FormularioService", code: 3, userInfo: [NSLocalizedDescriptionKey: "Ya tienes una solicitud pendiente. No puedes enviar otra hasta que se procese la actual."])
+                throw NSError(domain: "FormularioService", code: 3, userInfo: [NSLocalizedDescriptionKey: "Ya tienes una solicitud pendiente o aprobada para este vehículo. Puedes aplicar a otros vehículos diferentes."])
             }
             
             // Subir imagen de licencia
@@ -147,6 +149,9 @@ class FormularioService: ObservableObject {
             
             // Guardar en Firestore
             _ = try await db.collection("solicitudes").addDocument(data: solicitudData)
+            
+            // Notificar que se creó una nueva solicitud
+            NotificationCenter.default.post(name: NSNotification.Name("NuevaSolicitudEnviada"), object: nil)
             
             solicitudEnviada = true
             isLoading = false
