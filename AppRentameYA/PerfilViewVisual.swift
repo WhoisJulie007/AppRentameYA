@@ -114,39 +114,6 @@ struct PerfilViewVisual: View {
                         .padding(.horizontal)
                     }
                     
-                    // Mis Solicitudes
-                    VStack(alignment: .leading, spacing: 12) {
-                        HStack {
-                            Text("Mis Solicitudes")
-                                .font(.headline)
-                            Spacer()
-                            if solicitudesService.isLoading {
-                                ProgressView()
-                                    .scaleEffect(0.8)
-                            }
-                        }
-                        .padding(.horizontal)
-                        
-                        if solicitudesService.solicitudes.isEmpty && !solicitudesService.isLoading {
-                            VStack(spacing: 8) {
-                                Image(systemName: "doc.text")
-                                    .font(.system(size: 40))
-                                    .foregroundColor(.gray)
-                                Text("No tienes solicitudes")
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
-                            }
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 30)
-                        } else {
-                            ForEach(solicitudesService.solicitudes) { solicitud in
-                                SolicitudUsuarioCard(solicitud: solicitud)
-                                    .padding(.horizontal)
-                            }
-                        }
-                    }
-                    .padding(.top, 8)
-                    
                     // Botón de cerrar sesión
                     Button(action: {
                         auth.signOut()
@@ -183,27 +150,6 @@ struct PerfilViewVisual: View {
         }
         .sheet(isPresented: $mostrarAgregarVehiculo) {
             AgregarVehiculoView(firestoreManager: firestoreManager)
-        }
-        .onAppear {
-            // Iniciar listener para actualizaciones en tiempo real
-            solicitudesService.iniciarListenerMisSolicitudes()
-            
-            // También cargar una vez al aparecer
-            Task {
-                await solicitudesService.obtenerMisSolicitudes()
-            }
-        }
-        .onChange(of: auth.user?.uid) { _ in
-            // Refrescar cuando cambia el usuario
-            Task {
-                await solicitudesService.obtenerMisSolicitudes()
-            }
-        }
-        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("NuevaSolicitudEnviada"))) { _ in
-            // Refrescar cuando se envía una nueva solicitud
-            Task {
-                await solicitudesService.obtenerMisSolicitudes()
-            }
         }
     }
 }
