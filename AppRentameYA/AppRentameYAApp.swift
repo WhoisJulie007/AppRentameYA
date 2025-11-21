@@ -25,16 +25,27 @@ struct AppRentameYAApp: App {
     }
 
     @StateObject private var auth = AuthViewModel()
+    @State private var showSplash = true
     
     var body: some Scene {
         WindowGroup {
-            if auth.isAuthenticated {
-                RentameYaMainView()
-                    .environmentObject(auth)
-            } else {
-                RentameYaWelcomeView()
-                    .environmentObject(auth)
+            ZStack {
+                if showSplash {
+                    SplashScreenView(showSplash: $showSplash)
+                        .transition(.opacity)
+                } else {
+                    if auth.isAuthenticated {
+                        RentameYaMainView()
+                            .environmentObject(auth)
+                            .transition(.opacity)
+                    } else {
+                        RentameYaWelcomeView()
+                            .environmentObject(auth)
+                            .transition(.opacity)
+                    }
+                }
             }
+            .animation(.easeInOut(duration: 0.5), value: showSplash)
         }
     }
 }
